@@ -12,21 +12,21 @@
     <title>Web Server Structure :: Start with Amazon VPC and AWS VPN Site-to-Site.</title>
 
     
-    <link href="/css/nucleus.css?1711856462" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1711856462" rel="stylesheet">
-    <link href="/css/hybrid.css?1711856462" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1711856462" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1711856462" rel="stylesheet">
-    <link href="/css/auto-complete.css?1711856462" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1711856462" rel="stylesheet">
-    <link href="/css/theme.css?1711856462" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1711856462" rel="stylesheet">
+    <link href="/css/nucleus.css?1711981288" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711981288" rel="stylesheet">
+    <link href="/css/hybrid.css?1711981288" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711981288" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711981288" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711981288" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711981288" rel="stylesheet">
+    <link href="/css/theme.css?1711981288" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711981288" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1711856462" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711981288" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1711856462"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711981288"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1711856462"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1711856462"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711981288"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711981288"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1711856462"></script>
+<script type="text/javascript" src="/js/search.js?1711981288"></script>
 
     
   </div>
@@ -291,13 +291,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-terraform-install/" title="Security Group" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-terraform-install/" title="Install Terraform" class="dd-item 
         
         
         
         ">
       <a href="/2-prerequiste/2.1-terraform-install/">
-           <b> 2.1 </b> Security Group
+           <b> 2.1 </b> Install Terraform
           
             <i class="fas fa-check read-icon"></i>
           
@@ -763,78 +763,44 @@
 
 
 	<h4 id="web-server-structure">Web Server Structure</h4>
-<p><img alt="ws-structure" src="/images/2.2-ws-structure/00001.jpg?featherlight=false&width=60pc">
+<p>In Amazon Web Services (AWS), you can deploy a web server structure in various ways, depending on your specific needs and the AWS services you want to use. Here&rsquo;s a common approach to deploy a web server structure on AWS:
+<img alt="ws-structure" src="/images/2.2-ws-structure/simplewsstructure.png?featherlight=false&width=55pc">
 The structure of a web server can be divided into the following basic components:</p>
 <ol>
-<li>Server Hardware:</li>
+<li><strong>EC2 (Elastic Compute Cloud)</strong>:</li>
 </ol>
 <blockquote>
 <ul>
-<li><strong>Server</strong>: A computer that runs continuously to serve web services.</li>
-<li><strong>Network Connectivity</strong>: To connect to the internet or an internal network.</li>
+<li>The core component, responsible for processing requests and sending back results to users..</li>
+<li>Can be configured according to requirements for CPU, RAM, storage capacity, etc</li>
+<li>Common operating systems: Amazon Linux 2, Ubuntu Server, Windows Server.</li>
+<li>irewall configuration to allow HTTP (port 80) and HTTPS (port 443) connections to the instance.</li>
 </ul>
 </blockquote>
 <ol start="2">
-<li>Server Software:</li>
+<li><strong>RDS (Relational Database Service)</strong>:</li>
 </ol>
 <blockquote>
 <ul>
-<li><strong>Operating System</strong>: Typically variants of Linux (such as Ubuntu, CentOS) or Windows Server.</li>
-<li><strong>Web Server Software</strong>: Software running on the server to handle HTTP requests. Apache, Nginx, Microsoft IIS are common examples.</li>
+<li>If your web application requires a database, you can use RDS to deploy relational databases such as MySQL, PostgreSQL, or SQL Server.</li>
+<li>RDS provides features such as automatic backups, scalability based on demand, and data security.</li>
 </ul>
 </blockquote>
 <ol start="3">
-<li>Applications and data:</li>
+<li><strong>IAM (Identity and Access Management</strong>):</li>
 </ol>
 <blockquote>
 <ul>
-<li><strong>Web Application</strong>: The source code of the website or web application, often written in languages such as HTML, CSS, JavaScript, and backend languages like PHP, Python, Ruby, or Node.js.</li>
-<li><strong>Data</strong>: Databases are commonly used to store data for web applications, such as MySQL, PostgreSQL, MongoDB.</li>
-</ul>
-</blockquote>
-<p>The operation of a web server can be outlined as follows:</p>
-<ol>
-<li>Request Reception:</li>
-</ol>
-<blockquote>
-<ul>
-<li>The web server listens on a specific port (typically port 80 for HTTP or 443 for HTTPS).</li>
-<li>When an HTTP request is sent, the web server receives this request via the TCP/IP protocol.</li>
-</ul>
-</blockquote>
-<ol start="2">
-<li>Request Processing:</li>
-</ol>
-<blockquote>
-<ul>
-<li>The web server identifies the type of request (GET, POST, PUT, DELETE) and parses the Uniform Resource Identifier (URI).</li>
-<li>Based on the URI and configuration rules, the web server determines what to do with the request (e.g., access a file, execute source code, send back a previously stored webpage)</li>
-</ul>
-</blockquote>
-<ol start="3">
-<li>Response Generation:</li>
-</ol>
-<blockquote>
-<ul>
-<li>Based on the request type and content, the web server generates an HTTP response.</li>
-<li>This response could be an HTML page, a file, or a status code</li>
-<li>The response is sent back to the client via the TCP/IP protocol.</li>
+<li>Manage access permissions to AWS resources using IAM to ensure that only authorized users can access your resources.</li>
 </ul>
 </blockquote>
 <ol start="4">
-<li>Connection Closure:</li>
+<li><strong>Auto Scaling và Elastic Load Balancing</strong>:</li>
 </ol>
 <blockquote>
 <ul>
-<li>After the response is sent, the TCP/IP connection may be closed or kept alive to support keep-alive (keeping the connection open to reduce latency in establishing new connections).</li>
-</ul>
-</blockquote>
-<ol start="5">
-<li>Logging and Monitoring:</li>
-</ol>
-<blockquote>
-<ul>
-<li>The web server may log information about processed requests and server activity for analysis and performance monitoring purposes.</li>
+<li>Use Auto Scaling to automatically adjust the number of EC2 instances based on application demand.</li>
+<li>Use Elastic Load Balancing to distribute traffic between EC2 instances and increase application scalability.</li>
 </ul>
 </blockquote>
 
@@ -1170,7 +1136,7 @@ The structure of a web server can be divided into the following basic components
 	 
 	 
 		
-			<a class="nav nav-prev" href="/2-prerequiste/2.1-terraform-install/" title="Security Group"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/2-prerequiste/2.1-terraform-install/" title="Install Terraform"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/2-prerequiste/2.3-profile/" title="Adding an AWS profile using AWS CLI" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -1183,19 +1149,19 @@ The structure of a web server can be divided into the following basic components
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1711856462"></script>
-    <script src="/js/perfect-scrollbar.min.js?1711856462"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1711856462"></script>
-    <script src="/js/jquery.sticky.js?1711856462"></script>
-    <script src="/js/featherlight.min.js?1711856462"></script>
-    <script src="/js/highlight.pack.js?1711856462"></script>
+    <script src="/js/clipboard.min.js?1711981288"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711981288"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711981288"></script>
+    <script src="/js/jquery.sticky.js?1711981288"></script>
+    <script src="/js/featherlight.min.js?1711981288"></script>
+    <script src="/js/highlight.pack.js?1711981288"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1711856462"></script>
-    <script src="/js/learn.js?1711856462"></script>
-    <script src="/js/hugo-learn.js?1711856462"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711981288"></script>
+    <script src="/js/learn.js?1711981288"></script>
+    <script src="/js/hugo-learn.js?1711981288"></script>
 
-    <link href="/mermaid/mermaid.css?1711856462" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1711856462"></script>
+    <link href="/mermaid/mermaid.css?1711981288" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711981288"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

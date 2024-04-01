@@ -8,7 +8,7 @@ pre : " <b> 2.1. </b> "
 #### Cài đặt Terraform
 
 **Bước 1**: Tải xuống Terraform
-Truy cập trang web chính thức của Terraform https://developer.hashicorp.com/terraform sau đó nhấn vào install, chọn phiên bản phù hợp với hệ điều hành của bạn. Ở Window ta có 2 phiên bản 386 và AMD64, chọn 1 trong 2
+Truy cập trang web chính thức của Terraform [tại đây](https://developer.hashicorp.com/terraform) sau đó nhấn vào install, chọn phiên bản phù hợp với hệ điều hành của bạn. Ở Window ta có 2 phiên bản 386 và AMD64, chọn 1 trong 2
 
 ![Downloadsite](/images/2.1-terraform-install/00007.png?featherlight=false&width=70pc)
 ![OS](/images/2.1-terraform-install/00008.png?featherlight=false&width=70pc)

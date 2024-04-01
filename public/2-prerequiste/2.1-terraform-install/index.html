@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Security Group :: Start with Amazon VPC and AWS VPN Site-to-Site.</title>
+    <title>Install Terraform :: Start with Amazon VPC and AWS VPN Site-to-Site.</title>
 
     
-    <link href="/css/nucleus.css?1711856462" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1711856462" rel="stylesheet">
-    <link href="/css/hybrid.css?1711856462" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1711856462" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1711856462" rel="stylesheet">
-    <link href="/css/auto-complete.css?1711856462" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1711856462" rel="stylesheet">
-    <link href="/css/theme.css?1711856462" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1711856462" rel="stylesheet">
+    <link href="/css/nucleus.css?1711981288" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1711981288" rel="stylesheet">
+    <link href="/css/hybrid.css?1711981288" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1711981288" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1711981288" rel="stylesheet">
+    <link href="/css/auto-complete.css?1711981288" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1711981288" rel="stylesheet">
+    <link href="/css/theme.css?1711981288" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1711981288" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1711856462" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1711981288" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1711856462"></script>
+    <script src="/js/jquery-3.3.1.min.js?1711981288"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1711856462"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1711856462"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1711981288"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1711981288"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1711856462"></script>
+<script type="text/javascript" src="/js/search.js?1711981288"></script>
 
     
   </div>
@@ -291,13 +291,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-terraform-install/" title="Security Group" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-terraform-install/" title="Install Terraform" class="dd-item 
         
         active
         
         ">
       <a href="/2-prerequiste/2.1-terraform-install/">
-           <b> 2.1 </b> Security Group
+           <b> 2.1 </b> Install Terraform
           
             <i class="fas fa-check read-icon"></i>
           
@@ -717,7 +717,7 @@
             
           
           
-            <a href='/'>Start with Amazon VPC and AWS VPN Site-to-Site</a> > <a href='/2-prerequiste/'>Prerequiste</a> > Security Group
+            <a href='/'>Start with Amazon VPC and AWS VPN Site-to-Site</a> > <a href='/2-prerequiste/'>Prerequiste</a> > Install Terraform
           
         
           
@@ -732,14 +732,9 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#security-group">Security Group</a>
+    <li>
       <ul>
-        <li><a href="#basic-features-of-security-group">Basic Features of Security Group</a></li>
-      </ul>
-    </li>
-    <li><a href="#security-group-rule">Security Group Rule</a>
-      <ul>
-        <li><a href="#components-of-security-group-rule">Components of Security Group Rule</a></li>
+        <li></li>
       </ul>
     </li>
   </ul>
@@ -759,7 +754,7 @@
           
             <h1>
               
-              Security Group
+              Install Terraform
             </h1>
           
 
@@ -767,25 +762,27 @@
 
 
 
-	<h2 id="security-group">Security Group</h2>
-<h3 id="basic-features-of-security-group">Basic Features of Security Group</h3>
-<ul>
-<li><strong>Allow Rules Only:</strong> Only Allow rules can be added; Deny rules cannot be added.</li>
-<li><strong>Separate Rules for Traffic:</strong> Separate rules can be specified for outgoing and incoming traffic.</li>
-<li><strong>Initial Inbound Rules:</strong> A newly created Security group starts with no Inbound rules. Initially, the instance won&rsquo;t allow any traffic in, requiring the addition of an Inbound rule to enable access.</li>
-<li><strong>Default Outbound Rule:</strong> By default, the Security group includes an Outbound rule that permits all traffic to leave the instance. This rule can be modified or replaced with specific Outbound rules to control outgoing traffic originating from the instance. If there&rsquo;s no Outbound rule, no traffic is allowed to exit the instance.</li>
-<li><strong>Stateful Service:</strong> Security groups are stateful services, meaning that if incoming traffic is allowed, outgoing traffic is automatically permitted, and vice versa, regardless of the Outbound rule.</li>
-<li><strong>Instance Communication:</strong> Instances can communicate only if they are associated with a Security group that permits connections, or if a Security group associated with the instance contains a rule allowing traffic. The default Security group has default rules allowing all traffic.</li>
-<li><strong>Association with Network Interfaces:</strong> Security groups are associated with network interfaces. After initialization, you can change the Security group assigned to an instance, which will also update the Security group for the corresponding primary network interface.</li>
-</ul>
-<h2 id="security-group-rule">Security Group Rule</h2>
-<p>A Security group rule is created to grant access to traffic entering or leaving an instance. This access can apply to a specific CIDR or to a Security group in the same VPC, or even to a Security group in another VPC connected by peering.</p>
-<h3 id="components-of-security-group-rule">Components of Security Group Rule</h3>
-<ul>
-<li><strong>Inbound Rules:</strong> These include the source of the traffic and the destination port or port range. The source can be another security group, an IPv4 or IPv6 CIDR range, or an IPv4/IPv6 address.</li>
-<li><strong>Outbound Rules:</strong> These include the destination of the traffic and the destination port or port range. The destination can be another security group, an IPv4 or IPv6 CIDR range, an IPv4/IPv6 address, or a service identified by a prefix (e.g. igw_xxx) in the prefix ID list (where services are identified by the prefix ID - the name and ID of the available service in the region).</li>
-<li><strong>Standard Protocols:</strong> Each protocol has a standard protocol number associated with it. For instance, SSH is associated with port number 22.</li>
-</ul>
+	<h4 id="install-terraform">Install Terraform</h4>
+<p><strong>Step 1</strong>: Download Terraform
+Access the official website of Terraform <a href="https://developer.hashicorp.com/terraform">here</a>
+Then click on &ldquo;install,&rdquo; choose the version suitable for your operating system. For Windows, there are two versions available: 386 and AMD64. Select one of the two..
+<img alt="Downloadsite" src="/images/2.1-terraform-install/00007.png?featherlight=false&width=70pc">
+<img alt="OS" src="/images/2.1-terraform-install/00008.png?featherlight=false&width=70pc"></p>
+<p><strong>Step 2</strong>: Extract Terraform.
+After downloading, extract the Terraform package. The extraction location depends on you. Here, we&rsquo;ll extract it to the directory C:\Program Files\Terraform.</p>
+<p><strong>Step 3</strong>: Add Terraform to the PATH.
+To use <strong>Terraform</strong> from any directory, you need to add it to the system&rsquo;s PATH.</p>
+<ol>
+<li>In the Windows search bar, type &ldquo;Advanced system settings&rdquo;.</li>
+<li>Navigate to the <strong>Advanced</strong> tab and select <strong>Environment Variables</strong>.
+<img alt="PATH" src="/images/2.1-terraform-install/00003.png?featherlight=false&width=26pc"></li>
+<li>Select <strong>Path</strong> and click <strong>Edit</strong>.
+<img alt="PATH" src="/images/2.1-terraform-install/00004.png?featherlight=false&width=26pc"></li>
+<li>Select <strong>New</strong> and enter the path to the Terraform directory, then click <strong>OK</strong>.
+<img alt="PATH" src="/images/2.1-terraform-install/00005.png?featherlight=false&width=26pc"></li>
+<li>Check if Terraform is successfully installed by entering the command <code>terraform --version</code> in the command prompt (cmd). If the Terraform version is displayed upon entering the command, it means you have successfully installed Terraform.
+<img alt="Advancedsystem" src="/images/2.1-terraform-install/00006.png?featherlight=false&width=50pc"></li>
+</ol>
 
 
 
@@ -1129,19 +1126,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1711856462"></script>
-    <script src="/js/perfect-scrollbar.min.js?1711856462"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1711856462"></script>
-    <script src="/js/jquery.sticky.js?1711856462"></script>
-    <script src="/js/featherlight.min.js?1711856462"></script>
-    <script src="/js/highlight.pack.js?1711856462"></script>
+    <script src="/js/clipboard.min.js?1711981288"></script>
+    <script src="/js/perfect-scrollbar.min.js?1711981288"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1711981288"></script>
+    <script src="/js/jquery.sticky.js?1711981288"></script>
+    <script src="/js/featherlight.min.js?1711981288"></script>
+    <script src="/js/highlight.pack.js?1711981288"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1711856462"></script>
-    <script src="/js/learn.js?1711856462"></script>
-    <script src="/js/hugo-learn.js?1711856462"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1711981288"></script>
+    <script src="/js/learn.js?1711981288"></script>
+    <script src="/js/hugo-learn.js?1711981288"></script>
 
-    <link href="/mermaid/mermaid.css?1711856462" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1711856462"></script>
+    <link href="/mermaid/mermaid.css?1711981288" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1711981288"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

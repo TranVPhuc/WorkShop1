@@ -7,30 +7,24 @@ pre : " <b> 2.2.</b> "
 ---
 
 ### Cấu trúc Web Server
-
-![ws-structure](/images/2.2-ws-structure/00001.jpg?featherlight=false&width=60pc)
+Trong Amazon Web Services (AWS), bạn có thể triển khai một cấu trúc web server bằng nhiều cách, tùy thuộc vào nhu cầu cụ thể của bạn và các dịch vụ AWS mà bạn muốn sử dụng. Dưới đây là  một cấu trúc web server cơ bản trên AWS:
+![ws-structure](/images/2.2-ws-structure/simplewsstructure.png?featherlight=false&width=55pc)
 Cấu trúc của một web server có thể được phân thành các thành phần cơ bản sau:
-1. Phần cứng máy chủ (Server Hardware):
-> * **Máy chủ**: Một máy tính chạy liên tục để chạy các dịch vụ web.
-> * **Kết nối mạng**: Để kết nối với internet hoặc mạng nội bộ.**
-2. Phần mềm máy chủ (Server Software):
-> * **Hệ điều hành**: Thường là các biến thể của Linux (như Ubuntu, CentOS) hoặc Windows Server.
-> * **Web server software**: Phần mềm chạy trên máy chủ để xử lý các yêu cầu HTTP. Apache, Nginx, Microsoft IIS là các ví dụ phổ biến.
-3. Ứng dụng và dữ liêu:
-> * **Ứng dụng web**: Mã nguồn của trang web hoặc ứng dụng web, thường được viết bằng các ngôn ngữ như HTML, CSS, JavaScript, và back-end languages như PHP, Python, Ruby, hoặc Node.js.
-> * **Dữ liệu**: Cơ sở dữ liệu thường được sử dụng để lưu trữ dữ liệu của ứng dụng web, như MySQL, PostgreSQL, MongoDB.
-Cách hoạt động của 1 Web Server:
-1. Tiếp nhận yêu cầu (Request Handling):
-> * Web server lắng nghe trên một cổng nhất định (thường là cổng 80 cho HTTP hoặc 443 cho HTTPS).
-> * Khi một yêu cầu HTTP được gửi đến, web server tiếp nhận yêu cầu này qua giao thức TCP/IP.
-2. Xử lý yêu cầu (Request Processing):
-> * Web server xác định loại yêu cầu (GET, POST, PUT, DELETE) và phân tích URI (Uniform Resource Identifier).
-> * Dựa vào URI và các quy tắc cấu hình, web server quyết định làm gì với yêu cầu (ví dụ: truy cập tệp tin, thực thi mã nguồn, gửi lại trang web đã lưu trữ trước đó).
-3. Tạo và gửi phản hồi (Response Generation):
-> * Dựa vào loại yêu cầu và nội dung yêu cầu, web server tạo ra một phản hồi HTTP.
-> * Phản hồi này có thể là một trang HTML, một tệp tin, hoặc một mã trạng thái (status code).
-> * Phản hồi được gửi trở lại cho máy khách thông qua giao thức TCP/IP.
-4. Kết thúc kết nối (Connection Closure):
-> * Sau khi phản hồi được gửi đi, kết nối TCP/IP có thể được đóng hoặc duy trì để hỗ trợ keep-alive (giữ kết nối mở để giảm độ trễ trong việc thiết lập kết nối mới).
-5. Ghi log và theo dõi (Logging and Monitoring):
-> * Web server có thể ghi lại thông tin về các yêu cầu đã xử lý và hoạt động của máy chủ để phân tích và theo dõi hiệu suất.
+1. **EC2 (Elastic Compute Cloud)**:
+> * Là thành phần cốt lõi, chịu trách nhiệm xử lý yêu cầu và gửi trả kết quả cho người dùng.
+> * Có thể lựa chọn cấu hình phù hợp với nhu cầu về CPU, RAM, dung lượng lưu trữ,...
+> * Hệ điều hành phổ biến: Amazon Linux 2, Ubuntu Server, Windows Server.
+> * Cấu hình tường lửa để cho phép kết nối HTTP (port 80) và HTTPS (port 443) vào instance.
+
+2. **RDS (Relational Database Service)**:
+> * Nếu ứng dụng web của bạn cần cơ sở dữ liệu, bạn có thể sử dụng RDS để triển khai cơ sở dữ liệu quan hệ như MySQL, PostgreSQL, hoặc SQL Server.
+> * RDS cung cấp các tính năng như sao lưu tự động, mở rộng dựa trên nhu cầu, và bảo mật dữ liệu.
+
+3. **IAM (Identity and Access Management**):
+
+> * Quản lý quyền truy cập vào các tài nguyên AWS bằng cách sử dụng IAM để đảm bảo rằng chỉ có người dùng được ủy quyền mới có thể truy cập vào các tài nguyên của bạn.
+
+4. **Auto Scaling và Elastic Load Balancing**:
+
+> * Sử dụng Auto Scaling để tự động điều chỉnh số lượng các instance EC2 dựa trên yêu cầu của ứng dụng.
+> * Sử dụng Elastic Load Balancing để phân phối lưu lượng truy cập giữa các instance EC2 và tăng khả năng chịu tải của ứng dụng.

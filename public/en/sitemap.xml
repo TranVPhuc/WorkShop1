@@ -14,18 +14,6 @@
                 href="//localhost:1313/3-explantion/3.1-provider/"
                 />
   </url><url>
-    <loc>//localhost:1313/1-introduce/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/1-introduce/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/1-introduce/"
-                />
-  </url><url>
     <loc>//localhost:1313/2-prerequiste/2.1-terraform-install/</loc>
     <xhtml:link
                 rel="alternate"
@@ -36,6 +24,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-prerequiste/2.1-terraform-install/"
+                />
+  </url><url>
+    <loc>//localhost:1313/1-introduce/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/1-introduce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/1-introduce/"
                 />
   </url><url>
     <loc>//localhost:1313/</loc>
